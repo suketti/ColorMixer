@@ -1,0 +1,47 @@
+﻿<Window x:Class="ColorMixer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorMixer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Label Content="{Binding Value, ElementName=sliRed, Mode=OneWay}" ContentStringFormat="{}{0:N0}"></Label>
+        <Slider x:Name="sliRed" Grid.Column="1" Minimum="0" Maximum="255" VerticalAlignment="Center" ValueChanged="sli_ValueChanged"/>
+        <Label Grid.Column="2" Content="Piros" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label Content="{Binding Value, ElementName=sliGreen, Mode=OneWay}" ContentStringFormat="{}{0:N0}" Grid.Row="1"/>
+        <Slider x:Name="sliGreen" Grid.Column="1" Minimum="0" Maximum="255" VerticalAlignment="Center" Grid.Row="1" ValueChanged="sli_ValueChanged"/>
+        <Label Grid.Column="2" Content="Zöld" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+        <Label Content="{Binding Value, ElementName=sliBlue, Mode=OneWay}" ContentStringFormat="{}{0:N0}" Grid.Row="2"/>
+        <Slider x:Name="sliBlue" Grid.Column="1" Minimum="0" Maximum="255" VerticalAlignment="Center" Grid.Row="2" ValueChanged="sli_ValueChanged"/>
+        <Label Grid.Column="2" Content="Kék"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnFix" Content="Rögzít" Grid.Column="0" Click="BtnFix"/>
+            <Button x:Name="btnDelete" Content="Törlés" Grid.Column="1" Click="BtnDelete"/>
+            <Button x:Name="btnUnload" Content="Ürítés" Grid.Column="2" Click="BtnUnload"/>
+        </Grid>
+
+        <ListBox x:Name="lbColors" Background="LightGoldenrodYellow" Grid.Row="4" Grid.ColumnSpan="3" MouseDoubleClick="PassColor"/>
+
+        <Rectangle x:Name="rctRectangle" Grid.Row="5" Grid.ColumnSpan="3" Fill="Black" Margin="10" />
+    </Grid>
+</Window>
